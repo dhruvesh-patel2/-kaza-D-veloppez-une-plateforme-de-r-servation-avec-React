@@ -1,0 +1,152 @@
+/* =========================
+   Header principal
+========================= */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+/* =========================
+   Conteneur du header
+========================= */
+.header__container {
+  width: min(100% - 32px, 1000px);
+  height: 64px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 40px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+/* =========================
+   Navigation desktop
+========================= */
+.header__links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+}
+/* =========================
+   Actions desktop
+========================= */
+.header__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+  color: #a83a25;
+}
+/* =========================
+   Zone logo
+========================= */
+.header__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* =========================
+   Logos
+========================= */
+.header__logo-desktop {
+  width: 128px;
+  height: auto;
+}
+.header__logo-mobile {
+  display: none;
+}
+/* =========================
+   Burger
+========================= */
+.header__burger {
+  display: none;
+}
+/* =========================
+   Menu mobile
+========================= */
+.mobile-menu {
+  position: fixed;
+  top: 24px;
+  right: -100%;
+  width: calc(100% - 32px);
+  max-width: 360px;
+  height: calc(100vh - 48px);
+  background: #ffffff;
+  padding: 24px 16px;
+  z-index: 999;
+  transition: right 0.3s ease;
+}
+/* =========================
+   Menu mobile ouvert
+========================= */
+.mobile-menu--open {
+  right: 16px;
+}
+/* =========================
+   Bouton fermeture
+========================= */
+.mobile-menu__close {
+  display: block;
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+/* =========================
+   Liens menu mobile
+========================= */
+.mobile-menu__links {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 36px;
+  font-size: 16px;
+}
+/* =========================
+   Bouton ajout logement mobile
+========================= */
+.mobile-menu__button {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 18px;
+  background: #a83a25;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 13px;
+}
+/* =========================
+   Responsive mobile
+========================= */
+@media (max-width: 900px) {
+  .header__container {
+    width: calc(100% - 32px);
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+  .header__links,
+  .header__actions {
+    display: none;
+  }
+  .header__logo-desktop {
+    display: none;
+  }
+  .header__logo-mobile {
+    display: block;
+    width: 34px;
+    height: auto;
+  }
+  .header__burger {
+    display: block;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
