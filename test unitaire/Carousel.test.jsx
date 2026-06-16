@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+
+// Import des fonctions de test React Testing Library
 import { render, screen } from "@testing-library/react";
 
 // Import des méthodes supplémentaires Jest DOM

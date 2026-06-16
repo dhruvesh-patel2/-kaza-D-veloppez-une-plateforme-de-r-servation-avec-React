@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "./FavoriteButton";
 // Composant carte logement
 // Reçoit les données d’un logement grâce à la prop "property"
 export default function PropertyCard({ property }) {
@@ -10,6 +11,7 @@ export default function PropertyCard({ property }) {
         href={`/properties/${property.id}`}
         className="property-card__link"
       >
+        {/* Image du logement */}
         <div className="property-card__image">
           <Image
             src={property.cover}
@@ -22,9 +24,11 @@ export default function PropertyCard({ property }) {
           <h2>
             {property.title}
           </h2>
+          {/* Localisation */}
           <p>
             {property.location}
           </p>
+          {/* Prix */}
           <strong>
             {property.price_per_night}€
             <span>
@@ -33,12 +37,9 @@ export default function PropertyCard({ property }) {
           </strong>
         </div>
       </Link>
-      <button
-        className="property-card__favorite"
-        aria-label="Ajouter aux favoris"
-      >
-        <Image src="/img/favorie.png" alt="Favori" width={14} height={14} />
-      </button>
+      {/* Bouton favoris */}
+      <FavoriteButton propertyId={property.id} />
+
     </article>
   );
 }

@@ -177,3 +177,10 @@
     grid-template-columns: 1fr;
   }
 }
+.property-card__favorite--active {
+  background: #9d2f1b;
+}
+
+.property-card__favorite--active img {
+  filter: brightness(0) invert(1);
+}
