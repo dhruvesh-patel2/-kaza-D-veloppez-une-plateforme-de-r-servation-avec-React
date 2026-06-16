@@ -37,7 +37,7 @@ export default function PropertyCard({ property }) {
         className="property-card__favorite"
         aria-label="Ajouter aux favoris"
       >
-        ♥
+        <Image src="/img/favorie.png" alt="Favori" width={14} height={14} />
       </button>
     </article>
   );

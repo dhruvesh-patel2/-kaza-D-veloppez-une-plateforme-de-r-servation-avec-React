@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 // Import du CSS du header
 import "../styles/header.css";
@@ -9,34 +11,38 @@ export default function Header() {
     <header className="header">
       <nav className="header__container">
         <div className="header__links">
-          <a href="/">Accueil</a>
-          <a href="/about">À propos</a>
+          <Link href="/">Accueil</Link>
+          <Link href="/about">À propos</Link>
         </div>
-        <a href="/" className="header__logo">
-          <img
+        <Link href="/" className="header__logo">
+          <Image
             src="/img/Logo.png"
             alt="Logo Kasa"
             className="header__logo-desktop"
+            width={128}
+            height={43}
           />
-          <img
+          <Image
             src="/img/logo-responsive.png"
             alt="Logo Kasa mobile"
             className="header__logo-mobile"
+            width={34}
+            height={34}
           />
-        </a>
+        </Link>
         {/* Actions desktop */}
         <div className="header__actions">
-          <a href="/add-property">
+          <Link href="/add-property">
             + Ajouter un logement
-          </a>
+          </Link>
 
-          <a href="/favorites">
-            ♡
-          </a>
+          <Link href="/favorites" className="header__icon-link" aria-label="Favoris">
+            <Image src="/img/favorie.png" alt="Favoris" width={16} height={16} />
+          </Link>
 
-          <a href="/messages">
-            ▱
-          </a>
+          <Link href="/messages" className="header__icon-link" aria-label="Messagerie">
+            <Image src="/img/messagerie.png" alt="Messagerie" width={16} height={16} />
+          </Link>
         </div>
         {/* Bouton burger mobile */}
         <button
@@ -49,10 +55,12 @@ export default function Header() {
       </nav>
       <div className={`mobile-menu ${isMenuOpen ? "mobile-menu--open" : ""}`}>
         <div className="mobile-menu__top">
-          <img
+          <Image
             src="/img/logo-responsive.png"
             alt="Logo mobile"
             className="mobile-menu__logo"
+            width={34}
+            height={34}
           />
           <button
             className="mobile-menu__close"
@@ -64,25 +72,14 @@ export default function Header() {
         </div>
         {/* Navigation mobile */}
         <div className="mobile-menu__links">
-          <a href="/">
-            Accueil
-          </a>
-          <a href="/about">
-            À propos
-          </a>
-          <a href="/messages">
-            Messagerie
-          </a>
-          <a href="/favorites">
-            Favoris
-          </a>
+          <Link href="/">Accueil</Link>
+          <Link href="/about">À propos</Link>
+          <Link href="/messages">Messagerie</Link>
+          <Link href="/favorites">Favoris</Link>
         </div>
-        <a
-          href="/add-property"
-          className="mobile-menu__button"
-        >
+        <Link href="/add-property" className="mobile-menu__button">
           Ajouter un logement
-        </a>
+        </Link>
       </div>
     </header>
   );

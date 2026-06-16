@@ -1,3 +1,6 @@
+// Import du composant Link de Next.js
+import Link from "next/link";
+import Image from "next/image";
 // Import du CSS du footer
 import "../styles/footer.css";
 
@@ -10,12 +13,17 @@ export default function Footer() {
       <div className="footer__container">
 
         {/* Logo du footer */}
-        <a href="/" className="footer__logo">
-          <img
-            src="/img/logo-responsive.png"
-            alt="Logo Kasa"
-          />
-        </a>
+        <Link
+          href="/"
+          className="footer__logo"
+        >
+         <Image
+  src="/img/logo-responsive.png"
+  alt="Logo Kasa"
+  width={34}
+  height={34}
+/>
+        </Link>
 
         {/* Copyright */}
         <p className="footer__copyright">

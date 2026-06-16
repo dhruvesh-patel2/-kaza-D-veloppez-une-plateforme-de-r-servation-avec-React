@@ -1,7 +1,7 @@
 import "../styles/home.css";
 import { getProperties } from "../lib/api";
 import PropertyCard from "../components/PropertyCard";
-
+import Image from "next/image";
 export default async function Home() {
   const properties = await getProperties();
 
@@ -10,7 +10,13 @@ export default async function Home() {
       <section className="home__hero">
         <h1>Chez vous,<br className="home__break" /> partout et ailleurs</h1>
         <p>Avec Kasa, vivez des séjours uniques dans des hébergements chaleureux, sélectionnés avec soin par nos hôtes.</p>
-        <img src="/img/banner.png" alt="Maison moderne dans les dunes" />
+       <Image
+          src="/img/banner.png"
+          alt="Maison moderne dans les dunes"
+          width={1000}
+          height={330}
+          className="home__banner"
+        />
       </section>
 
       <section className="home__grid">

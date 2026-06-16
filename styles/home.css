@@ -82,12 +82,14 @@
   position: absolute;
   top: 14px;
   right: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px;
   border: none;
   border-radius: 8px;
   background: #ffffff;
-  color: #999999;
   cursor: pointer;
 }
 /* =========================

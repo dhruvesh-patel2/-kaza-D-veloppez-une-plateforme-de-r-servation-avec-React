@@ -41,6 +41,14 @@
   font-size: 14px;
   color: #a83a25;
 }
+
+.header__icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
 /* =========================
    Zone logo
 ========================= */
