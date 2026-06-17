@@ -1,0 +1,180 @@
+/* =========================
+   Page favoris
+========================= */
+.favorites-page {
+  width: min(100% - 32px, 1000px);
+  margin: 90px auto 0;
+}
+
+/* =========================
+   En-tête favoris
+========================= */
+.favorites-page__hero {
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+/* =========================
+   Titre favoris
+========================= */
+.favorites-page__hero h1 {
+  color: #9d2f1b;
+  font-size: 34px;
+  margin-bottom: 18px;
+}
+
+/* =========================
+   Texte intro favoris
+========================= */
+.favorites-page__hero p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* =========================
+   Grille favoris
+========================= */
+.favorites-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* =========================
+   Carte logement favoris
+========================= */
+.favorites-page .property-card {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+/* =========================
+   Image carte favoris
+========================= */
+.favorites-page .property-card__image {
+  position: relative;
+  width: 100%;
+  height: 260px;
+}
+
+/* =========================
+   Image Next.js
+========================= */
+.favorites-page .property-card__image img {
+  object-fit: cover;
+}
+
+/* =========================
+   Contenu carte favoris
+========================= */
+.favorites-page .property-card__content {
+  padding: 20px;
+}
+
+/* =========================
+   Titre logement
+========================= */
+.favorites-page .property-card__content h2 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   Localisation
+========================= */
+.favorites-page .property-card__content p {
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 32px;
+}
+
+/* =========================
+   Prix
+========================= */
+.favorites-page .property-card__content strong {
+  font-size: 14px;
+}
+
+/* =========================
+   Texte "par nuit"
+========================= */
+.favorites-page .property-card__content span {
+  font-weight: 400;
+  color: #666666;
+}
+
+/* =========================
+   Bouton favori
+========================= */
+.favorites-page .property-card__favorite {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* =========================
+   Bouton favori actif
+========================= */
+.favorites-page .property-card__favorite--active {
+  background: #9d2f1b;
+}
+
+/* =========================
+   Icône favori actif
+========================= */
+.favorites-page .property-card__favorite--active img {
+  filter: brightness(0) invert(1);
+}
+
+/* =========================
+   Message aucun favori
+========================= */
+.favorites-page__empty {
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
+  margin-top: 40px;
+}
+
+/* =========================
+   Responsive mobile
+========================= */
+@media (max-width: 900px) {
+  .favorites-page {
+    width: min(100% - 32px, 360px);
+    margin-top: 46px;
+  }
+
+  .favorites-page__hero {
+    margin-bottom: 36px;
+  }
+
+  .favorites-page__hero h1 {
+    font-size: 30px;
+  }
+
+  .favorites-page__hero p {
+    font-size: 16px;
+  }
+
+  .favorites-page__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .favorites-page .property-card__image {
+    height: 360px;
+  }
+}
