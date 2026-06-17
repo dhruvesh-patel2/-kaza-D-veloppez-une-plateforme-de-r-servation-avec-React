@@ -402,4 +402,82 @@
 
 .carousel__arrow:hover {
   transform: translateY(-50%) scale(1.05);
+}/* =========================
+   Animations carousel
+========================= */
+
+.carousel__main img,
+.carousel__mosaic-item img,
+.carousel__thumbnail img {
+  object-fit: cover;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.carousel__main:hover img,
+.carousel__mosaic-item:hover img {
+  transform: scale(1.02);
+}
+
+.carousel__arrow {
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel__arrow:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* =========================
+   Collapse
+========================= */
+
+.collapse {
+  margin-top: 18px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.collapse__header {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background: #f3f3f3;
+  color: #2b2b2b;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.collapse__icon {
+  transition: transform 0.25s ease;
+}
+
+.collapse--open .collapse__icon {
+  transform: rotate(180deg);
+}
+
+.collapse__content {
+  max-height: 0;
+  overflow: hidden;
+  background: #ffffff;
+  transition: max-height 0.3s ease;
+}
+
+.collapse--open .collapse__content {
+  max-height: 500px;
+}
+
+.collapse__inner {
+  padding: 18px;
+  border: 1px solid #f1ece7;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Corrige l’ancien espacement */
+.property-detail__section {
+  display: none;
 }

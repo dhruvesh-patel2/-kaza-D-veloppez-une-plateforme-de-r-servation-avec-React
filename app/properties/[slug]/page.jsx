@@ -3,39 +3,36 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPropertyById } from "../../../lib/api";
 import Carousel from "../../../components/Carousel";
-// Page détail d’un logement
+import Collapse from "../../../components/Collapse";
+// Page détail logement
 export default async function PropertyDetail({ params }) {
-  // Récupération de l’id du logement depuis l’URL
-  const { slug } = await params;
-  // Récupération des données du logement depuis l’API
+  // Récupération de l’id depuis l’URL
+  const { slug } = await params
+  // Récupération du logement depuis l’API
   const property = await getPropertyById(slug);
   return (
     <main className="property-detail">
-      {/* Lien retour vers la page d’accueil */}
+      {/* Retour accueil */}
       <Link
         href="/"
         className="property-detail__back"
       >
         ← Retour aux annonces
       </Link>
-      {/* Layout principal : contenu + carte hôte */}
+
       <div className="property-detail__layout">
-        {/* Partie principale de la page */}
         <section className="property-detail__main">
-          {/* Galerie / carousel */}
+          {/* Carousel */}
           <div className="property-detail__gallery">
             <Carousel
               pictures={property.pictures}
               title={property.title}
             />
           </div>
-          {/* Informations du logement */}
+          {/* Contenu logement */}
           <section className="property-detail__content">
-            {/* Titre du logement */}
-            <h1>
-              {property.title}
-            </h1>
-            {/* Localisation */}
+            <h1>{property.title}</h1>
+
             <p className="property-detail__location">
               <Image
                 src="/img/Property 1=localisation.png"
@@ -47,15 +44,15 @@ export default async function PropertyDetail({ params }) {
               />
               {property.location}
             </p>
-            {/* Description */}
-            <p className="property-detail__description">
-              {property.description}
-            </p>
-            {/* Section équipements */}
-            <div className="property-detail__section">
-              <h2>
-                Équipements
-              </h2>
+
+            {/* Collapse description */}
+            <Collapse title="Description">
+              <p className="property-detail__description">
+                {property.description}
+              </p>
+            </Collapse>
+            {/* Collapse équipements */}
+            <Collapse title="Équipements">
               <div className="property-detail__tags">
                 {property.equipments?.map((equipment) => (
                   <span key={equipment}>
@@ -63,13 +60,9 @@ export default async function PropertyDetail({ params }) {
                   </span>
                 ))}
               </div>
-            </div>
-            {/* Section catégories */}
-            <div className="property-detail__section">
-              <h2>
-                Catégorie
-              </h2>
-
+            </Collapse>
+            {/* Collapse catégorie */}
+            <Collapse title="Catégorie">
               <div className="property-detail__tags">
                 {property.tags?.map((tag) => (
                   <span key={tag}>
@@ -77,16 +70,13 @@ export default async function PropertyDetail({ params }) {
                   </span>
                 ))}
               </div>
-            </div>
+            </Collapse>
           </section>
         </section>
         {/* Carte hôte */}
         <aside className="property-detail__host">
-          {/* Titre carte hôte */}
-          <h2>
-            Votre hôte
-          </h2>
-          {/* Informations hôte */}
+          <h2>Votre hôte</h2>
+
           <div className="property-detail__host-info">
             <Image
               src={property.host.picture}
@@ -104,16 +94,13 @@ export default async function PropertyDetail({ params }) {
               </div>
             </div>
           </div>
-          {/* Actions pour contacter l’hôte */}
           <div className="property-detail__host-actions">
-            {/* Lien vers la messagerie */}
             <Link
               href="/messages"
               className="property-detail__host-button"
             >
               Contacter l’hôte
             </Link>
-            {/* Lien vers la messagerie */}
             <Link
               href="/messages"
               className="property-detail__host-button"
