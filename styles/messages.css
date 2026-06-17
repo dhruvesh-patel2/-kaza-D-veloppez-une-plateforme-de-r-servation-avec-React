@@ -1,0 +1,193 @@
+/* =========================
+   Page messagerie
+========================= */
+.messages-page {
+  width: min(100% - 32px, 720px);
+  margin: 40px auto 0;
+}
+
+/* =========================
+   Bouton retour
+========================= */
+.messages-page__back {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 18px;
+  margin-bottom: 40px;
+  background: #f4f4f4;
+  border-radius: 8px;
+  color: #333333;
+  text-decoration: none;
+}
+
+/* =========================
+   Liste messages
+========================= */
+.messages-thread__list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* =========================
+   Message
+========================= */
+.message {
+  display: flex;
+  gap: 10px;
+}
+
+/* =========================
+   Message envoyé
+========================= */
+.message--sent {
+  justify-content: flex-end;
+}
+
+/* =========================
+   Avatar
+========================= */
+.message__avatar {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background: #555555;
+  border-radius: 6px;
+}
+
+/* =========================
+   Avatar message envoyé
+========================= */
+.message--sent .message__avatar {
+  order: 2;
+}
+
+/* =========================
+   Contenu message
+========================= */
+.message__content {
+  max-width: 320px;
+}
+
+/* =========================
+   Infos message
+========================= */
+.message__meta {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: #777777;
+}
+
+/* =========================
+   Message envoyé aligné droite
+========================= */
+.message--sent .message__meta {
+  justify-content: flex-end;
+}
+
+/* =========================
+   Bulle message
+========================= */
+.message__bubble {
+  padding: 16px 18px;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 0 18px 18px 18px;
+  line-height: 1.45;
+}
+
+/* =========================
+   Bulle message envoyé
+========================= */
+.message--sent .message__bubble {
+  background: #9d2f1b;
+  color: #ffffff;
+  border-color: #9d2f1b;
+  border-radius: 18px 0 18px 18px;
+}
+
+/* =========================
+   Séparateur date
+========================= */
+.messages-thread__date {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 28px;
+  color: #777777;
+  font-size: 12px;
+}
+
+/* =========================
+   Lignes date
+========================= */
+.messages-thread__date span {
+  flex: 1;
+  height: 1px;
+  background: #999999;
+}
+
+/* =========================
+   Formulaire message
+========================= */
+.messages-thread__form {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  gap: 10px;
+  margin-top: 50px;
+  padding: 20px 0;
+  background: #fffbf9;
+}
+
+/* =========================
+   Champ message
+========================= */
+.messages-thread__form input {
+  flex: 1;
+  height: 48px;
+  padding: 0 18px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* =========================
+   Bouton envoyer
+========================= */
+.messages-thread__form button {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  background: #9d2f1b;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* =========================
+   Responsive mobile
+========================= */
+@media (max-width: 900px) {
+  .messages-page {
+    width: min(100% - 16px, 390px);
+    margin-top: 20px;
+  }
+
+  .messages-page__back {
+    margin-bottom: 36px;
+  }
+
+  .message__content {
+    max-width: 270px;
+  }
+
+  .messages-thread__form {
+    padding: 18px 22px;
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+}
