@@ -1,0 +1,336 @@
+.add-property-page {
+  width: min(100% - 32px, 1100px);
+  margin: 72px auto 0;
+}
+
+.add-property {
+  width: 100%;
+}
+
+.add-property__top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin-bottom: 44px;
+}
+
+.add-property__back {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 18px;
+  border-radius: 10px;
+  background: #f4f4f4;
+  color: #555555;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.add-property__submit {
+  justify-self: end;
+  min-width: 86px;
+  height: 38px;
+  border: none;
+  border-radius: 9px;
+  background: #9d2f1b;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-property__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.add-property h1 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 44px;
+}
+
+.add-property__error,
+.add-property__success {
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.add-property__error {
+  background: #fff0ed;
+  color: #9d2f1b;
+}
+
+.add-property__success {
+  background: #eef8f0;
+  color: #206b31;
+}
+
+.add-property__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "main images"
+    "main host"
+    "equipments categories";
+  gap: 32px 18px;
+  align-items: stretch;
+}
+
+.add-property__card {
+  min-height: 220px;
+  padding: 58px 72px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.add-property__card:nth-child(1) {
+  grid-area: main;
+}
+
+.add-property__card:nth-child(2) {
+  grid-area: images;
+}
+
+.add-property__card:nth-child(3) {
+  grid-area: host;
+}
+
+.add-property__card:nth-child(4) {
+  grid-area: equipments;
+}
+
+.add-property__card:nth-child(5) {
+  grid-area: categories;
+}
+
+.add-property__card--large {
+  min-height: 430px;
+}
+
+.add-property__card label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.add-property__card input,
+.add-property__card textarea {
+  width: 100%;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  background: #ffffff;
+  font-size: 13px;
+  color: #222222;
+}
+
+.add-property__card input {
+  height: 36px;
+  padding: 0 12px;
+}
+
+.add-property__card textarea {
+  min-height: 104px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.add-property__card input::placeholder,
+.add-property__card textarea::placeholder {
+  color: #8d8d8d;
+}
+
+.add-property__upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-property__upload input {
+  flex: 1;
+}
+
+.add-property__upload button {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 6px;
+  background: #9d2f1b;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.add-property__text-button {
+  border: none;
+  background: transparent;
+  color: #9d2f1b;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.add-property__card h2 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.add-property__checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 54px;
+}
+
+.add-property__checkboxes label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #666666;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.add-property__checkboxes input {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  cursor: pointer;
+  accent-color: #9d2f1b;
+}
+
+.add-property__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.add-property__tag {
+  min-width: 58px;
+  height: 30px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 5px;
+  background: #f2f2f2;
+  color: #666666;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.add-property__tag--active {
+  background: #9d2f1b;
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .add-property-page {
+    width: min(100% - 32px, 390px);
+    margin-top: 28px;
+  }
+
+  .add-property__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .add-property__back {
+    min-height: 36px;
+    padding: 8px 14px;
+    font-size: 15px;
+  }
+
+  .add-property__submit {
+    min-width: 96px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .add-property h1 {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .add-property__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .add-property__card {
+    width: 100%;
+    min-height: auto;
+    padding: 18px 16px;
+    border-radius: 8px;
+  }
+
+  .add-property__card--large {
+    min-height: auto;
+  }
+
+  .add-property__card label {
+    gap: 8px;
+    margin-bottom: 18px;
+    font-size: 16px;
+  }
+
+  .add-property__card input {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .add-property__card textarea {
+    min-height: 120px;
+    font-size: 14px;
+  }
+
+  .add-property__upload {
+    gap: 8px;
+  }
+
+  .add-property__upload button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .add-property__text-button {
+    font-size: 15px;
+  }
+
+  .add-property__card h2 {
+    font-size: 16px;
+    margin-bottom: 22px;
+  }
+
+  .add-property__checkboxes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 22px;
+  }
+
+  .add-property__checkboxes label {
+    font-size: 14px;
+  }
+
+  .add-property__tags {
+    gap: 8px;
+  }
+
+  .add-property__tag {
+    min-width: 66px;
+    height: 34px;
+    font-size: 14px;
+  }
+}
