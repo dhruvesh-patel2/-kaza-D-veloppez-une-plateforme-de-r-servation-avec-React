@@ -111,4 +111,52 @@
   .login-form button {
     width: 230px;
   }
+}/* =========================
+   CONDITIONS GÉNÉRALES
+========================= */
+
+.register-form__terms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: -6px;
+
+  font-size: 14px;
+  color: #555555;
+}
+
+.register-form__terms input {
+  width: 16px;
+  height: 16px;
+
+  accent-color: #9d2f1b;
+
+  cursor: pointer;
+}
+
+.register-form__terms span {
+  line-height: 1.4;
+}
+
+.register-form__terms a {
+  color: #777777;
+  text-decoration: underline;
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+  .register-form__terms {
+    align-items: flex-start;
+
+    font-size: 13px;
+  }
+
+  .register-form__terms input {
+    margin-top: 2px;
+  }
 }
