@@ -1,3 +1,5 @@
+// Import du composant Link Next.js
+import Link from "next/link";
 // Import du style de la page messagerie
 import "../../styles/messages.css";
 // Import du composant messagerie
@@ -7,9 +9,12 @@ export default function MessagesPage() {
   return (
     <main className="messages-page">
       {/* Bouton retour */}
-      <a href="/" className="messages-page__back">
+      <Link
+        href="/"
+        className="messages-page__back"
+      >
         ← Retour
-      </a>
+      </Link>
       {/* Conversation */}
       <MessageThread />
     </main>

@@ -384,4 +384,22 @@
 
 .property-detail__host-button:hover {
   background: #842815;
+}.carousel__main img,
+.carousel__mosaic-item img,
+.carousel__thumbnail img {
+  object-fit: cover;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.carousel__main:hover img,
+.carousel__mosaic-item:hover img {
+  transform: scale(1.02);
+}
+
+.carousel__arrow {
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel__arrow:hover {
+  transform: translateY(-50%) scale(1.05);
 }
