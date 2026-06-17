@@ -17,6 +17,7 @@ export default function PropertyCard({ property }) {
             src={property.cover}
             alt={property.title}
             fill
+            unoptimized
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </div>

@@ -7,7 +7,7 @@ import Collapse from "../../../components/Collapse";
 // Page détail logement
 export default async function PropertyDetail({ params }) {
   // Récupération de l’id depuis l’URL
-  const { slug } = await params
+  const { slug } = await params;
   // Récupération du logement depuis l’API
   const property = await getPropertyById(slug);
   return (
@@ -19,7 +19,6 @@ export default async function PropertyDetail({ params }) {
       >
         ← Retour aux annonces
       </Link>
-
       <div className="property-detail__layout">
         <section className="property-detail__main">
           {/* Carousel */}
@@ -44,7 +43,6 @@ export default async function PropertyDetail({ params }) {
               />
               {property.location}
             </p>
-
             {/* Collapse description */}
             <Collapse title="Description">
               <p className="property-detail__description">
@@ -76,19 +74,17 @@ export default async function PropertyDetail({ params }) {
         {/* Carte hôte */}
         <aside className="property-detail__host">
           <h2>Votre hôte</h2>
-
           <div className="property-detail__host-info">
             <Image
-              src={property.host.picture}
+              src={property.host.picture || "/img/logo-responsive.png"}
               alt={property.host.name}
-              width={74}
-              height={74}
+              width={64}
+              height={64}
             />
             <div className="property-detail__host-meta">
               <span className="property-detail__host-name">
                 {property.host.name}
               </span>
-
               <div className="property-detail__rating">
                 ★ {property.rating_avg}
               </div>

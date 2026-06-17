@@ -1,37 +1,29 @@
 "use client";
-
 import { useMemo, useState } from "react";
 import Image from "next/image";
-
 export default function Carousel({ pictures = [], title }) {
   const safePictures = useMemo(
     () => (Array.isArray(pictures) ? pictures.filter(Boolean) : []),
     [pictures]
   );
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const hasPictures = safePictures.length > 0;
   const hasMultiplePictures = safePictures.length > 1;
-
   if (!hasPictures) {
     return null;
   }
-
   const desktopPictures = safePictures.slice(0, 5);
   const mobilePictures = safePictures;
-
   const previousPicture = () => {
     setCurrentIndex((previousIndex) =>
       previousIndex === 0 ? mobilePictures.length - 1 : previousIndex - 1
     );
   };
-
   const nextPicture = () => {
     setCurrentIndex((previousIndex) =>
       previousIndex === mobilePictures.length - 1 ? 0 : previousIndex + 1
     );
   };
-
   return (
     <div className="carousel">
       <div className="carousel__mosaic">
@@ -45,12 +37,12 @@ export default function Carousel({ pictures = [], title }) {
               alt={`${title} - image ${index + 1}`}
               fill
               priority={index === 0}
+              unoptimized
               sizes="(max-width: 900px) 100vw, 760px"
             />
           </div>
         ))}
       </div>
-
       <div className="carousel__mobile">
         <div className="carousel__main">
           <Image
@@ -58,9 +50,9 @@ export default function Carousel({ pictures = [], title }) {
             alt={title}
             fill
             priority
+            unoptimized
             sizes="(max-width: 900px) 100vw, 760px"
           />
-
           {hasMultiplePictures && (
             <>
               <button
@@ -71,7 +63,6 @@ export default function Carousel({ pictures = [], title }) {
               >
                 ←
               </button>
-
               <button
                 type="button"
                 className="carousel__arrow carousel__arrow--right"
@@ -83,7 +74,6 @@ export default function Carousel({ pictures = [], title }) {
             </>
           )}
         </div>
-
         {hasMultiplePictures && (
           <div className="carousel__thumbnails">
             {mobilePictures.map((picture, index) => (
@@ -100,6 +90,7 @@ export default function Carousel({ pictures = [], title }) {
                   src={picture}
                   alt={`${title} - image ${index + 1}`}
                   fill
+                  unoptimized
                   sizes="(max-width: 900px) 25vw, 160px"
                 />
               </button>

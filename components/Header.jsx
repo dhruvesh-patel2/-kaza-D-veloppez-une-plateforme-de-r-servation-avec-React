@@ -1,19 +1,42 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-// Import du CSS du header
+import { useEffect, useState } from "react";
 import "../styles/header.css";
 export default function Header() {
-  // État du menu mobile
+  // État menu mobile
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Utilisateur connecté
+  const [user, setUser] = useState(null);
+  // Chargement utilisateur depuis localStorage
+  useEffect(() => {
+    const storedUser = localStorage.getItem("kasa_user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+  // Vérifie connexion
+  const isLoggedIn = Boolean(user);
+  // Vérifie rôle
+  const canAddProperty =
+    user?.role === "owner" ||
+    user?.role === "admin";
+  // Déconnexion
+  const handleLogout = () => {
+    localStorage.removeItem("kasa_token");
+    localStorage.removeItem("kasa_user");
+
+    window.location.href = "/";
+  };
   return (
     <header className="header">
       <nav className="header__container">
+        {/* Navigation gauche */}
         <div className="header__links">
           <Link href="/">Accueil</Link>
           <Link href="/about">À propos</Link>
         </div>
+        {/* Logo */}
         <Link href="/" className="header__logo">
           <Image
             src="/img/Logo.png"
@@ -32,19 +55,59 @@ export default function Header() {
         </Link>
         {/* Actions desktop */}
         <div className="header__actions">
-          <Link href="/add-property">
-            + Ajouter un logement
-          </Link>
+          {!isLoggedIn && (
+            <>
+              <Link href="/login">
+                Se connecter
+              </Link>
 
-          <Link href="/favorites" className="header__icon-link" aria-label="Favoris">
-            <Image src="/img/favorie.png" alt="Favoris" width={16} height={16} />
-          </Link>
-
-          <Link href="/messages" className="header__icon-link" aria-label="Messagerie">
-            <Image src="/img/messagerie.png" alt="Messagerie" width={16} height={16} />
-          </Link>
+              <Link href="/register">
+                Créer un compte
+              </Link>
+            </>
+          )}
+          {isLoggedIn && (
+            <>
+              {canAddProperty && (
+                <Link href="/add-property">
+                  + Ajouter un logement
+                </Link>
+              )}
+              <Link
+                href="/favorites"
+                className="header__icon-link"
+                aria-label="Favoris"
+              >
+                <Image
+                  src="/img/favorie.png"
+                  alt="Favoris"
+                  width={16}
+                  height={16}
+                />
+              </Link>
+              <Link
+                href="/messages"
+                className="header__icon-link"
+                aria-label="Messagerie"
+              >
+                <Image
+                  src="/img/messagerie.png"
+                  alt="Messagerie"
+                  width={16}
+                  height={16}
+                />
+              </Link>
+              <button
+                type="button"
+                className="header__logout"
+                onClick={handleLogout}
+              >
+                Déconnexion
+              </button>
+            </>
+          )}
         </div>
-        {/* Bouton burger mobile */}
+        {/* Burger mobile */}
         <button
           className="header__burger"
           onClick={() => setIsMenuOpen(true)}
@@ -53,6 +116,7 @@ export default function Header() {
           ☰
         </button>
       </nav>
+      {/* Menu mobile */}
       <div className={`mobile-menu ${isMenuOpen ? "mobile-menu--open" : ""}`}>
         <div className="mobile-menu__top">
           <Image
@@ -62,6 +126,7 @@ export default function Header() {
             width={34}
             height={34}
           />
+
           <button
             className="mobile-menu__close"
             onClick={() => setIsMenuOpen(false)}
@@ -70,16 +135,52 @@ export default function Header() {
             ✕
           </button>
         </div>
-        {/* Navigation mobile */}
+        {/* Liens mobile */}
         <div className="mobile-menu__links">
           <Link href="/">Accueil</Link>
-          <Link href="/about">À propos</Link>
-          <Link href="/messages">Messagerie</Link>
-          <Link href="/favorites">Favoris</Link>
+          <Link href="/about">
+            À propos
+          </Link>
+
+          {!isLoggedIn && (
+            <>
+              <Link href="/login">
+                Se connecter
+              </Link>
+
+              <Link href="/register">
+                Créer un compte
+              </Link>
+            </>
+          )}
+          {isLoggedIn && (
+            <>
+              <Link href="/messages">
+                Messagerie
+              </Link>
+              <Link href="/favorites">
+                Favoris
+              </Link>
+
+              <button
+                type="button"
+                className="mobile-menu__logout"
+                onClick={handleLogout}
+              >
+                Déconnexion
+              </button>
+            </>
+          )}
         </div>
-        <Link href="/add-property" className="mobile-menu__button">
-          Ajouter un logement
-        </Link>
+        {/* Bouton ajout logement mobile */}
+        {isLoggedIn && canAddProperty && (
+          <Link
+            href="/add-property"
+            className="mobile-menu__button"
+          >
+            Ajouter un logement
+          </Link>
+        )}
       </div>
     </header>
   );
