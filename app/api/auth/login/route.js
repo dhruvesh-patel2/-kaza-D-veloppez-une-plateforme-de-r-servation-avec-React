@@ -1,9 +1,11 @@
+import { AUTH_URL } from "../../../../lib/config";
+
 // Route proxy Next.js pour éviter les erreurs CORS
 export async function POST(request) {
   // Récupération des données envoyées par le formulaire
   const body = await request.json();
   // Envoi de la requête vers le backend Express
-  const response = await fetch("http://localhost:3000/auth/login", {
+  const response = await fetch(`${AUTH_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

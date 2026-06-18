@@ -1,8 +1,10 @@
+import { API_URL } from "../../../../lib/config";
+
 // Route proxy Next.js pour uploader une image
 export async function POST(request) {
   const formData = await request.formData();
   const token = request.headers.get("authorization");
-  const response = await fetch("http://localhost:3000/api/uploads/image", {
+  const response = await fetch(`${API_URL}/uploads/image`, {
     method: "POST",
     headers: {
       Authorization: token,
