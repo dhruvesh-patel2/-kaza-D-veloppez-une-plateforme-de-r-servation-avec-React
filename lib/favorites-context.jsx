@@ -13,7 +13,11 @@ const EMPTY_FAVORITES = [];
 // Cache pour éviter de parser localStorage inutilement
 let cachedFavoritesString = null;
 let cachedFavoritesSnapshot = EMPTY_FAVORITES;
-// Fonction qui lit les favoris depuis localStorage côté navigateur
+
+/**
+ * Lit les favoris depuis localStorage et réutilise un snapshot en cache.
+ * @returns {string[]}
+ */
 function getFavoritesSnapshot() {
   if (typeof window === "undefined") {
     return EMPTY_FAVORITES;
@@ -31,11 +35,17 @@ function getFavoritesSnapshot() {
   cachedFavoritesSnapshot = JSON.parse(storedFavorites);
   return cachedFavoritesSnapshot;
 }
-// Valeur utilisée côté serveur pour éviter les erreurs d’hydratation
+
+/** Fournit une valeur stable côté serveur pour éviter les erreurs d’hydratation. */
 function getFavoritesServerSnapshot() {
   return EMPTY_FAVORITES;
 }
-// Fonction qui écoute les changements de favoris
+
+/**
+ * Écoute les changements de favoris dans l’onglet courant et entre onglets.
+ * @param {() => void} callback
+ * @returns {() => void}
+ */
 function subscribeToFavorites(callback) {
   if (typeof window === "undefined") {
     return () => {};
@@ -52,7 +62,13 @@ function subscribeToFavorites(callback) {
     window.removeEventListener("favorites-change", handleFavoritesChange);
   };
 }
-// Provider global des favoris
+
+/**
+ * Provider global des favoris.
+ * Synchronise la liste avec localStorage pour conserver les préférences utilisateur.
+ * @param {Object} props
+ * @param {import("react").ReactNode} props.children
+ */
 export function FavoritesProvider({ children }) {
   // Lecture synchronisée des favoris depuis localStorage
   const favorites = useSyncExternalStore(
@@ -64,7 +80,7 @@ export function FavoritesProvider({ children }) {
   const value = useMemo(() => {
     return {
       favorites,
-      // Fonction ajout / suppression favoris
+      // Ajoute ou retire un logement puis notifie le reste de l’application.
       toggleFavorite(propertyId) {
         const isFavorite = favorites.includes(propertyId);
         const updatedFavorites = isFavorite
@@ -86,7 +102,8 @@ export function FavoritesProvider({ children }) {
     </FavoritesContext.Provider>
   );
 }
-// Hook personnalisé pour utiliser les favoris
+
+/** Retourne le contexte des favoris et sécurise son usage dans le Provider. */
 export function useFavorites() {
   const context = useContext(FavoritesContext);
   // Sécurité si le hook est utilisé hors du Provider

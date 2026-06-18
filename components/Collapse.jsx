@@ -1,6 +1,12 @@
 "use client";
 import { useState } from "react";
-// Composant collapse réutilisable
+
+/**
+ * Bloc repliable réutilisable pour afficher ou masquer un contenu secondaire.
+ * @param {Object} props
+ * @param {string} props.title
+ * @param {import("react").ReactNode} props.children
+ */
 export default function Collapse({ title, children }) {
   // État ouvert / fermé
   const [isOpen, setIsOpen] = useState(false);

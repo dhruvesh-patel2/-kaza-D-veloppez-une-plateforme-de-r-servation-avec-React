@@ -1,7 +1,16 @@
 "use client";
 import { useMemo, useState } from "react";
 import Image from "next/image";
+
+/**
+ * Carousel responsive des images d’un logement.
+ * Permet la navigation entre plusieurs vues du bien.
+ * @param {Object} props
+ * @param {string[]} props.pictures
+ * @param {string} props.title
+ */
 export default function Carousel({ pictures = [], title }) {
+  // Filtre les valeurs invalides avant d’alimenter le carousel.
   const safePictures = useMemo(
     () => (Array.isArray(pictures) ? pictures.filter(Boolean) : []),
     [pictures]
@@ -14,11 +23,15 @@ export default function Carousel({ pictures = [], title }) {
   }
   const desktopPictures = safePictures.slice(0, 5);
   const mobilePictures = safePictures;
+
+  /** Passe à l’image précédente en bouclant sur la fin de la liste. */
   const previousPicture = () => {
     setCurrentIndex((previousIndex) =>
       previousIndex === 0 ? mobilePictures.length - 1 : previousIndex - 1
     );
   };
+
+  /** Passe à l’image suivante en bouclant sur le début de la liste. */
   const nextPicture = () => {
     setCurrentIndex((previousIndex) =>
       previousIndex === mobilePictures.length - 1 ? 0 : previousIndex + 1

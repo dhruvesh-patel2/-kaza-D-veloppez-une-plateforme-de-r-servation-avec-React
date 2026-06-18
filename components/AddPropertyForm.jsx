@@ -43,7 +43,11 @@ const DEFAULT_TAGS = [
   "Nature",
   "Touristique",
 ];
-// Formulaire ajout propriété
+
+/**
+ * Formulaire d’ajout de logement.
+ * Gère les champs du bien, les catégories, les équipements et les uploads d’images.
+ */
 export default function AddPropertyForm() {
   // Champs principaux
   const [formData, setFormData] = useState({
@@ -110,7 +114,7 @@ export default function AddPropertyForm() {
     }
     setCustomTag("");
   };
-  // Upload image de couverture
+  /** Upload l’image de couverture via la route proxy Next.js vers le backend. */
   const handleCoverUpload = async (event) => {
     const file = event.target.files[0];
 
@@ -121,7 +125,7 @@ export default function AddPropertyForm() {
 
     setCoverUrl(data.url);
   };
-  // Upload image logement
+  /** Upload une image du logement puis l’ajoute à la liste locale. */
   const handlePictureUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) {
@@ -134,7 +138,7 @@ export default function AddPropertyForm() {
       data.url,
     ]);
   };
-  // Upload photo hôte
+  /** Upload la photo de profil de l’hôte. */
   const handleHostPictureUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) {
@@ -143,7 +147,10 @@ export default function AddPropertyForm() {
     const data = await uploadImage(file, "user-picture");
     setHostPictureUrl(data.url);
   };
-  // Soumission du formulaire
+  /**
+   * Construit la charge utile attendue par l’API puis crée le logement.
+   * Les données de session sont relues depuis localStorage.
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorMessage("");

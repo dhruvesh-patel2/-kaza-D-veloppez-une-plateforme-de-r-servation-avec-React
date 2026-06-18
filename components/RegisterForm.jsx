@@ -6,7 +6,11 @@ import { useState } from "react";
 import Link from "next/link";
 // Import de la fonction API inscription
 import { registerUser } from "../lib/auth";
-// Composant formulaire inscription
+
+/**
+ * Formulaire d’inscription utilisateur.
+ * Crée un compte client puis stocke la session dans localStorage.
+ */
 export default function RegisterForm() {
   // Données du formulaire
   const [formData, setFormData] = useState({

@@ -5,7 +5,11 @@ import { useState } from "react";
 import Link from "next/link";
 // Import de la fonction API de connexion
 import { loginUser } from "../lib/auth";
-// Composant formulaire connexion
+
+/**
+ * Formulaire de connexion utilisateur.
+ * Sauvegarde le token et l’utilisateur dans localStorage après succès.
+ */
 export default function LoginForm() {
   // Données du formulaire
   const [formData, setFormData] = useState({

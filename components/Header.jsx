@@ -4,6 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import "../styles/header.css";
+
+/**
+ * En-tête principal du site.
+ * Affiche des actions différentes selon l’état de connexion et le rôle utilisateur.
+ */
 export default function Header() {
   // État menu mobile
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +17,8 @@ export default function Header() {
   // Permet d’éviter l’erreur d’hydratation Next.js
   const [isMounted, setIsMounted] = useState(false);
 
-  // Chargement utilisateur uniquement côté navigateur
+  // L’utilisateur est lu depuis localStorage uniquement après montage pour éviter
+  // un décalage entre le rendu serveur et le rendu client.
   useEffect(() => {
     setIsMounted(true);
     const storedUser = localStorage.getItem("kasa_user");
@@ -23,7 +29,7 @@ export default function Header() {
   }, []);
   // Vérifie connexion
   const isLoggedIn = isMounted && Boolean(user);
-  // Vérifie rôle owner/admin
+  // Le lien d’ajout de logement reste réservé aux rôles owner/admin.
   const canAddProperty =
     user?.role === "owner" ||
     user?.role === "admin";
