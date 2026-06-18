@@ -15,7 +15,8 @@ export default function PropertyCard({ property }) {
         <div className="property-card__image">
           <Image
             src={property.cover}
-            alt={property.title}
+            alt=""
+            aria-hidden="true"
             fill
             unoptimized
             sizes="(max-width: 768px) 100vw, 33vw"

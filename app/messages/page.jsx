@@ -8,6 +8,9 @@ import MessageThread from "../../components/MessageThread";
 export default function MessagesPage() {
   return (
     <main className="messages-page">
+      <h1 className="sr-only">
+        Messagerie
+      </h1>
       {/* Bouton retour */}
       <Link
         href="/"

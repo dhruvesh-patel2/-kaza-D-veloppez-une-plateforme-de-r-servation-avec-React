@@ -213,60 +213,78 @@ export default function AddPropertyForm() {
       )}
       <div className="add-property__grid">
         <section className="add-property__card add-property__card--large">
-          <label>
-            Titre de la propriété
+          <div className="add-property__field">
+            <label htmlFor="title">
+              Titre de la propriété
+            </label>
             <input
+              id="title"
               name="title"
               value={formData.title}
               onChange={handleChange}
               placeholder="Ex : Appartement cosy au cœur de paris"
               required
             />
-          </label>
-          <label>
-            Description
+          </div>
+          <div className="add-property__field">
+            <label htmlFor="description">
+              Description
+            </label>
             <textarea
+              id="description"
               name="description"
               value={formData.description}
               onChange={handleChange}
               placeholder="Décrivez votre propriété en détail..."
               required
             />
-          </label>
-          <label>
-            Prix par nuit
+          </div>
+          <div className="add-property__field">
+            <label htmlFor="price">
+              Prix par nuit
+            </label>
             <input
+              id="price"
               name="price"
               type="number"
               value={formData.price}
               onChange={handleChange}
               required
             />
-          </label>
-          <label>
-            Code postal
+          </div>
+          <div className="add-property__field">
+            <label htmlFor="postalCode">
+              Code postal
+            </label>
             <input
+              id="postalCode"
               name="postalCode"
               value={formData.postalCode}
               onChange={handleChange}
               required
             />
-          </label>
-          <label>
-            Localisation
+          </div>
+          <div className="add-property__field">
+            <label htmlFor="location">
+              Localisation
+            </label>
             <input
+              id="location"
               name="location"
               value={formData.location}
               onChange={handleChange}
               required
             />
-          </label>
+          </div>
         </section>
         <section className="add-property__card">
-          <label>
-            Image de couverture
+          <div className="add-property__field">
+            <label htmlFor="coverUrl">
+              Image de couverture
+            </label>
             <div className="add-property__upload">
               <input
+                id="coverUrl"
                 value={coverUrl}
                 readOnly
               />
@@ -277,11 +295,14 @@ export default function AddPropertyForm() {
                 +
               </button>
             </div>
-          </label>
-          <label>
-            Image du logement
+          </div>
+          <div className="add-property__field">
+            <label htmlFor="pictureUrls">
+              Image du logement
+            </label>
             <div className="add-property__upload">
               <input
+                id="pictureUrls"
                 value={`${pictureUrls.length} image(s) ajoutée(s)`}
                 readOnly
               />
@@ -292,7 +313,7 @@ export default function AddPropertyForm() {
                 +
               </button>
             </div>
-          </label>
+          </div>
           <button
             type="button"
             className="add-property__text-button"
@@ -302,33 +323,43 @@ export default function AddPropertyForm() {
           </button>
 
           <input
+            id="cover-image"
             ref={coverInputRef}
             type="file"
             accept="image/*"
             hidden
+            aria-label="Ajouter une image de couverture"
             onChange={handleCoverUpload}
           />
           <input
+            id="property-image"
             ref={pictureInputRef}
             type="file"
             accept="image/*"
             hidden
+            aria-label="Ajouter une image du logement"
             onChange={handlePictureUpload}
           />
         </section>
         <section className="add-property__card">
-          <label>
-            Nom de l’hôte
+          <div className="add-property__field">
+            <label htmlFor="hostName">
+              Nom de l’hôte
+            </label>
             <input
+              id="hostName"
               name="hostName"
               value={formData.hostName}
               onChange={handleChange}
             />
-          </label>
-          <label>
-            Photo de profil
+          </div>
+          <div className="add-property__field">
+            <label htmlFor="hostPictureUrl">
+              Photo de profil
+            </label>
             <div className="add-property__upload">
               <input
+                id="hostPictureUrl"
                 value={hostPictureUrl}
                 readOnly
               />
@@ -339,7 +370,7 @@ export default function AddPropertyForm() {
                 +
               </button>
             </div>
-          </label>
+          </div>
           <button
             type="button"
             className="add-property__text-button"
@@ -348,10 +379,12 @@ export default function AddPropertyForm() {
             +Ajouter une image
           </button>
           <input
+            id="host-picture"
             ref={hostPictureInputRef}
             type="file"
             accept="image/*"
             hidden
+            aria-label="Ajouter une photo de profil de l’hôte"
             onChange={handleHostPictureUpload}
           />
         </section>
@@ -392,10 +425,13 @@ export default function AddPropertyForm() {
               </button>
             ))}
           </div>
-          <label>
-            Ajouter une catégorie personnalisée
+          <div className="add-property__field">
+            <label htmlFor="customTag">
+              Ajouter une catégorie personnalisée
+            </label>
             <div className="add-property__upload">
               <input
+                id="customTag"
                 value={customTag}
                 onChange={(event) =>
                   setCustomTag(event.target.value)
@@ -409,7 +445,7 @@ export default function AddPropertyForm() {
                 +
               </button>
             </div>
-          </label>
+          </div>
           <button
             type="button"
             className="add-property__text-button"

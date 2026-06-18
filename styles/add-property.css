@@ -112,7 +112,8 @@
   min-height: 430px;
 }
 
-.add-property__card label {
+.add-property__card label,
+.add-property__field {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -281,7 +282,8 @@
     min-height: auto;
   }
 
-  .add-property__card label {
+  .add-property__card label,
+  .add-property__field {
     gap: 8px;
     margin-bottom: 18px;
     font-size: 16px;

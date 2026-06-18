@@ -78,8 +78,9 @@ describe("Carousel", () => {
       screen.getByLabelText("Image suivante")
     );
 
+    const matchingImages = screen.getAllByAltText("Vue du logement 2");
     expect(
-      screen.getByAltText("Logement test")
+      matchingImages[matchingImages.length - 1]
     ).toHaveAttribute("src", "/image-2.jpg");
   });
 
@@ -98,8 +99,9 @@ describe("Carousel", () => {
       screen.getByLabelText("Image précédente")
     );
 
+    const matchingImages = screen.getAllByAltText("Vue du logement 2");
     expect(
-      screen.getByAltText("Logement test")
+      matchingImages[matchingImages.length - 1]
     ).toHaveAttribute("src", "/image-2.jpg");
   });
 
@@ -118,8 +120,9 @@ describe("Carousel", () => {
       screen.getByLabelText("Afficher l’image 2")
     );
 
+    const matchingImages = screen.getAllByAltText("Vue du logement 2");
     expect(
-      screen.getByAltText("Logement test")
+      matchingImages[matchingImages.length - 1]
     ).toHaveAttribute("src", "/image-2.jpg");
   });
 });

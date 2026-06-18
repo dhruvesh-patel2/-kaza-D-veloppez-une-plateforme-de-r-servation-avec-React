@@ -34,7 +34,7 @@ export default function Carousel({ pictures = [], title }) {
           >
             <Image
               src={picture}
-              alt={`${title} - image ${index + 1}`}
+              alt={`Vue du logement ${index + 1}`}
               fill
               priority={index === 0}
               unoptimized
@@ -47,7 +47,7 @@ export default function Carousel({ pictures = [], title }) {
         <div className="carousel__main">
           <Image
             src={mobilePictures[currentIndex]}
-            alt={title}
+            alt={`Vue du logement ${currentIndex + 1}`}
             fill
             priority
             unoptimized
@@ -88,7 +88,8 @@ export default function Carousel({ pictures = [], title }) {
               >
                 <Image
                   src={picture}
-                  alt={`${title} - image ${index + 1}`}
+                  alt=""
+                  aria-hidden="true"
                   fill
                   unoptimized
                   sizes="(max-width: 900px) 25vw, 160px"

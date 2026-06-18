@@ -158,3 +158,28 @@
     cursor: pointer;
   }
 }
+.header__logout {
+  border: none;
+  background: transparent;
+  color: #9d2f1b;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+.header__logout:hover {
+  text-decoration: underline;
+}
+
+.mobile-menu__logout {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #9d2f1b;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+}

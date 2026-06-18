@@ -16,10 +16,12 @@ export default function Footer() {
         <Link
           href="/"
           className="footer__logo"
+          aria-label="Retour à l’accueil"
         >
          <Image
   src="/img/logo-responsive.png"
-  alt="Logo Kasa"
+  alt=""
+  aria-hidden="true"
   width={34}
   height={34}
 />

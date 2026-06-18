@@ -77,7 +77,7 @@
   gap: 6px;
   margin-bottom: 6px;
   font-size: 11px;
-  color: #777777;
+  color: #4f4f4f;
 }
 
 /* =========================
@@ -116,7 +116,7 @@
   align-items: center;
   gap: 12px;
   margin: 8px 0 28px;
-  color: #777777;
+  color: #4f4f4f;
   font-size: 12px;
 }
 
@@ -126,7 +126,7 @@
 .messages-thread__date span {
   flex: 1;
   height: 1px;
-  background: #999999;
+  background: #7a7a7a;
 }
 
 /* =========================

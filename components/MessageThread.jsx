@@ -56,6 +56,9 @@ export default function MessageThread() {
   };
   return (
     <section className="messages-thread">
+      <h2 className="sr-only">
+        Conversation
+      </h2>
       {/* Liste des messages */}
       <div className="messages-thread__list">
         {messages.map((message, index) => (

@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -8,16 +9,21 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // Utilisateur connecté
   const [user, setUser] = useState(null);
-  // Chargement utilisateur depuis localStorage
+  // Permet d’éviter l’erreur d’hydratation Next.js
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Chargement utilisateur uniquement côté navigateur
   useEffect(() => {
+    setIsMounted(true);
     const storedUser = localStorage.getItem("kasa_user");
+
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
   }, []);
   // Vérifie connexion
-  const isLoggedIn = Boolean(user);
-  // Vérifie rôle
+  const isLoggedIn = isMounted && Boolean(user);
+  // Vérifie rôle owner/admin
   const canAddProperty =
     user?.role === "owner" ||
     user?.role === "admin";
@@ -31,12 +37,10 @@ export default function Header() {
   return (
     <header className="header">
       <nav className="header__container">
-        {/* Navigation gauche */}
         <div className="header__links">
           <Link href="/">Accueil</Link>
           <Link href="/about">À propos</Link>
         </div>
-        {/* Logo */}
         <Link href="/" className="header__logo">
           <Image
             src="/img/Logo.png"
@@ -53,17 +57,11 @@ export default function Header() {
             height={34}
           />
         </Link>
-        {/* Actions desktop */}
         <div className="header__actions">
           {!isLoggedIn && (
             <>
-              <Link href="/login">
-                Se connecter
-              </Link>
-
-              <Link href="/register">
-                Créer un compte
-              </Link>
+              <Link href="/login">Se connecter</Link>
+              <Link href="/register">Créer un compte</Link>
             </>
           )}
           {isLoggedIn && (
@@ -80,7 +78,7 @@ export default function Header() {
               >
                 <Image
                   src="/img/favorie.png"
-                  alt="Favoris"
+                  alt=""
                   width={16}
                   height={16}
                 />
@@ -92,7 +90,7 @@ export default function Header() {
               >
                 <Image
                   src="/img/messagerie.png"
-                  alt="Messagerie"
+                  alt=""
                   width={16}
                   height={16}
                 />
@@ -107,7 +105,6 @@ export default function Header() {
             </>
           )}
         </div>
-        {/* Burger mobile */}
         <button
           className="header__burger"
           onClick={() => setIsMenuOpen(true)}
@@ -116,7 +113,6 @@ export default function Header() {
           ☰
         </button>
       </nav>
-      {/* Menu mobile */}
       <div className={`mobile-menu ${isMenuOpen ? "mobile-menu--open" : ""}`}>
         <div className="mobile-menu__top">
           <Image
@@ -126,7 +122,6 @@ export default function Header() {
             width={34}
             height={34}
           />
-
           <button
             className="mobile-menu__close"
             onClick={() => setIsMenuOpen(false)}
@@ -135,33 +130,19 @@ export default function Header() {
             ✕
           </button>
         </div>
-        {/* Liens mobile */}
         <div className="mobile-menu__links">
           <Link href="/">Accueil</Link>
-          <Link href="/about">
-            À propos
-          </Link>
-
+          <Link href="/about">À propos</Link>
           {!isLoggedIn && (
             <>
-              <Link href="/login">
-                Se connecter
-              </Link>
-
-              <Link href="/register">
-                Créer un compte
-              </Link>
+              <Link href="/login">Se connecter</Link>
+              <Link href="/register">Créer un compte</Link>
             </>
           )}
           {isLoggedIn && (
             <>
-              <Link href="/messages">
-                Messagerie
-              </Link>
-              <Link href="/favorites">
-                Favoris
-              </Link>
-
+              <Link href="/messages">Messagerie</Link>
+              <Link href="/favorites">Favoris</Link>
               <button
                 type="button"
                 className="mobile-menu__logout"
@@ -172,7 +153,6 @@ export default function Header() {
             </>
           )}
         </div>
-        {/* Bouton ajout logement mobile */}
         {isLoggedIn && canAddProperty && (
           <Link
             href="/add-property"
